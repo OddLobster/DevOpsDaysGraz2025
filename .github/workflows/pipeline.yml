@@ -42,7 +42,7 @@ jobs:
         env:
           VERSION: ${{ inputs.version || '0.0.0' }}
           VERSIONNAME: ${{ inputs.versionname || 'dev'}}
-        run: dotnet publish -c Release src\DevOpsDaysTasks.UI\ -o DevOpsDaysTasks /p:Version=${{ VERSION }} /p:VersionName=${{ VERSIONNAME }}
+        run: dotnet publish -c Release src\DevOpsDaysTasks.UI\ -o DevOpsDaysTasks /p:Version=${{ env.VERSION }} /p:VersionName=${{ env.VERSIONNAME }}
 
       - name: Checkout external Files
         uses: actions/checkout@v4
