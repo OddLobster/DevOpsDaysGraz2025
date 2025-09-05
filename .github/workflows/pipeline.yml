@@ -38,3 +38,8 @@ jobs:
           mkdir DevOpsDaysTasks\Help
           cp workshop_material\Help.pdf DevOpsDaysTasks\Help
 
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          path: DevOpsDaysTasks
+          name: DevOpsDaysTasks
