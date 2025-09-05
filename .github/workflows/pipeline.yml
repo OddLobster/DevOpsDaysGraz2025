@@ -21,3 +21,6 @@ jobs:
 
       - name: Run Integration Tests
         run: dotnet test src/DevOpsDaysTasks.IntegrationTests
+
+      - name: Build a Release
+        run: dotnet publish -c Release src\DevOpsDaysTasks.UI\ -o DevOpsDaysTasks /p:Version=1.0.0 /p:VersionName=chaos
