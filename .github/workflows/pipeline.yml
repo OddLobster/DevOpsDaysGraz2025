@@ -8,6 +8,10 @@ on:
         description: Version number
         required: true
         type: string
+      versionname:
+        description: Version name
+        required: true
+        type: string
 
 jobs:
   release-pipeline:
@@ -34,8 +38,11 @@ jobs:
       - name: Create release dir
         run: mkdir DevOpsDaysTasks
 
-      - name: Build a Release
-        run: dotnet publish -c Release src\DevOpsDaysTasks.UI\ -o DevOpsDaysTasks /p:Version=1.0.0 /p:VersionName=chaos
+      - name: Publish a Release
+        env:
+          VERSION: ${{ inputs.version || '0.0.0' }}
+          VERSIONNAME: ${{ inputs.versionname || 'dev'}}
+        run: dotnet publish -c Release src\DevOpsDaysTasks.UI\ -o DevOpsDaysTasks /p:Version=${{ VERSION }} /p:VersionName=${{ VERSIONNAME }}
 
       - name: Checkout external Files
         uses: actions/checkout@v4
