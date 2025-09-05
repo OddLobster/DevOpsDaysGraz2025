@@ -28,5 +28,15 @@ jobs:
       - name: Build a Release
         run: dotnet publish -c Release src\DevOpsDaysTasks.UI\ -o DevOpsDaysTasks /p:Version=1.0.0 /p:VersionName=chaos
 
+      - name: Create template dir
+        run: mkdir DevOpsDaysTasks\Templates
+
       - name: Copy default tasks
         run: cp workshop_material\default-tasks.xml DevOpsDaysTasks\Templates\
+
+      - name: Create Help dir
+        run: mkdir DevOpsDaysTasks\Help
+
+      - name: Copy help pdf
+        run: cp workshop_material\Help.pdf DevOpsDaysTasks\Help
+
