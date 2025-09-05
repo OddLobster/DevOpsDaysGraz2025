@@ -19,3 +19,7 @@ jobs:
       - name: Run Tests
         run: dotnet test src/DevOpsDaysTasks.Core.Tests
 
+      - name: Run Integration Tests
+        run: dotnet test src/DevOpsDaysTasks.IntegrationTests
+
+      - name:
