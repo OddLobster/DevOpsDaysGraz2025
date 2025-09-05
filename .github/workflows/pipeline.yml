@@ -31,15 +31,21 @@ jobs:
       - name: Build a Release
         run: dotnet publish -c Release src\DevOpsDaysTasks.UI\ -o DevOpsDaysTasks /p:Version=1.0.0 /p:VersionName=chaos
 
+      - name: Checkout external Files
+        uses: actions/checkout@v4
+        with:
+          repository: martinzimmermann/DevOpsDaysGraz2025-ExternalFiles
+          path: ExternalFiles
+
       - name: Populate template folder
         run: |
           mkdir DevOpsDaysTasks\Templates
-          cp workshop_material\default-tasks.xml DevOpsDaysTasks\Templates\
+          cp ExternalFiles\default-tasks.xml DevOpsDaysTasks\Templates\
 
       - name: Populate help folder
         run: |
           mkdir DevOpsDaysTasks\Help
-          cp workshop_material\Help.pdf DevOpsDaysTasks\Help
+          cp ExternalFiles\Help.pdf DevOpsDaysTasks\Help
 
       - name: Create Cert
         run: |
